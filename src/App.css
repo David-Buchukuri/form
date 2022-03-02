@@ -22,3 +22,25 @@
   width: 100px;
   display: flex;
 }
+
+.home-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-wrapper button {
+  width: 600px;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+.page input {
+  width: 400px;
+}
+
+.page p {
+  font-size: 25px;
+}

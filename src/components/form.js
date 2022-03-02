@@ -5,10 +5,19 @@ import Page4 from "./page4";
 import Home from "./home";
 import Submit from "./submit";
 
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+// import { NextDisabledContext,nameErrContext,lastNameErr,emailErr,phoneErr } from "../helper/context";
 const Form = () => {
   const [page, setPage] = useState(0);
+  const [nextDisabled, setNextDisabled] = useState(true);
+  const [firstName, setfirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [firstNameErr, setfirstNameErr] = useState(null);
+  const [lastNameErr, setLastNameErr] = useState(null);
+  const [emailErr, setEmailErr] = useState(null);
+  const [phoneErr, setPhoneErr] = useState(null);
 
   const handleNext = () => {
     return setPage(page + 1);
@@ -22,7 +31,28 @@ const Form = () => {
     if (page >= 0 && page <= 5) {
       switch (page) {
         case 1:
-          return <Page1 />;
+          return (
+            <Page1
+              nextDisabled={nextDisabled}
+              setNextDisabled={setNextDisabled}
+              firstName={firstName}
+              setfirstName={setfirstName}
+              lastName={lastName}
+              setLastName={setLastName}
+              email={email}
+              setEmail={setEmail}
+              phone={phone}
+              setPhone={setPhone}
+              firstNameErr={firstNameErr}
+              setfirstNameErr={setfirstNameErr}
+              lastNameErr={lastNameErr}
+              setLastNameErr={setLastNameErr}
+              emailErr={emailErr}
+              setEmailErr={setEmailErr}
+              phoneErr={phoneErr}
+              setPhoneErr={setPhoneErr}
+            />
+          );
         case 2:
           return <Page2 />;
         case 3:
@@ -36,9 +66,23 @@ const Form = () => {
       }
     }
   };
+
+  useEffect(() => {
+    if (
+      firstNameErr === false &&
+      lastNameErr === false &&
+      emailErr === false &&
+      phoneErr === false &&
+      page === 1
+    ) {
+      setNextDisabled(false);
+    } else {
+      setNextDisabled(true);
+    }
+  }, [firstNameErr, lastNameErr, emailErr, phoneErr]);
   return (
     <div className="form-wrapper">
-      {console.log(page)}
+      {/* <NextDisabledContext.Provider value={{nextDisabled: { nextDisabled, setNextDisabled }, nameErr{}}}> */}
       <div className="page">{displayPage()}</div>
 
       {page >= 1 && page <= 4 && (
@@ -46,11 +90,16 @@ const Form = () => {
           <button className="arrow" onClick={handleBack}>
             {"<"}
           </button>
-          <button className="arrow" onClick={handleNext}>
+          <button
+            className="arrow"
+            disabled={nextDisabled}
+            onClick={handleNext}
+          >
             {">"}
           </button>
         </div>
       )}
+      {/* </NextDisabledContext.Provider> */}
     </div>
   );
 };

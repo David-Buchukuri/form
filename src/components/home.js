@@ -1,13 +1,13 @@
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Home = ({ forward }) => {
   return (
-    <div>
-      <div>home</div>
-      {/* <Link to="/form" onClick={handleNext}> 
-        go to form
-      </Link>*/}
+    <div className="home-wrapper">
+      <div>homepage</div>
       <button onClick={forward}>start questionnarie</button>
+      <Link to="/applications">
+        <button>go to all applications</button>
+      </Link>
     </div>
   );
 };
