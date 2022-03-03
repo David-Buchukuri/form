@@ -6,7 +6,6 @@ import Home from "./home";
 import Submit from "./submit";
 
 import { useState, useEffect } from "react";
-// import { NextDisabledContext,nameErrContext,lastNameErr,emailErr,phoneErr } from "../helper/context";
 const Form = () => {
   const [page, setPage] = useState(0);
   const [nextDisabled, setNextDisabled] = useState(true);
@@ -18,6 +17,13 @@ const Form = () => {
   const [lastNameErr, setLastNameErr] = useState(null);
   const [emailErr, setEmailErr] = useState(null);
   const [phoneErr, setPhoneErr] = useState(null);
+  const [yearErr, setYearErr] = useState(null);
+  //
+  const [skills, setSkills] = useState(null);
+  const [selectedSkills, setSelectedSkills] = useState([]);
+  const [currentSkills, setCurrentSkills] = useState([]);
+  const [curSelected, setCurSelected] = useState(null);
+  const [years, setYears] = useState("");
 
   const handleNext = () => {
     return setPage(page + 1);
@@ -51,10 +57,31 @@ const Form = () => {
               setEmailErr={setEmailErr}
               phoneErr={phoneErr}
               setPhoneErr={setPhoneErr}
+              setNextDisabled={setNextDisabled}
+              page={page}
             />
           );
         case 2:
-          return <Page2 />;
+          return (
+            <Page2
+              skills={skills}
+              setSkills={setSkills}
+              selectedSkills={selectedSkills}
+              setSelectedSkills={setSelectedSkills}
+              curSelected={curSelected}
+              setCurSelected={setCurSelected}
+              currentSkills={currentSkills}
+              setCurrentSkills={setCurrentSkills}
+              years={years}
+              setYears={setYears}
+              yearErr={yearErr}
+              setYearErr={setYearErr}
+              nextDisabled={nextDisabled}
+              setNextDisabled={setNextDisabled}
+              page={page}
+              setPage={setPage}
+            />
+          );
         case 3:
           return <Page3 />;
         case 4:
@@ -82,7 +109,6 @@ const Form = () => {
   }, [firstNameErr, lastNameErr, emailErr, phoneErr]);
   return (
     <div className="form-wrapper">
-      {/* <NextDisabledContext.Provider value={{nextDisabled: { nextDisabled, setNextDisabled }, nameErr{}}}> */}
       <div className="page">{displayPage()}</div>
 
       {page >= 1 && page <= 4 && (
@@ -99,7 +125,6 @@ const Form = () => {
           </button>
         </div>
       )}
-      {/* </NextDisabledContext.Provider> */}
     </div>
   );
 };

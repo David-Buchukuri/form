@@ -1,4 +1,4 @@
-// import { useState, useEffect, useContext } from "react";
+import { useEffect } from "react";
 // import { NextDisabledContext } from "../helper/context";
 // const Page1 = ({ data, setData, setNextDisabled }) => {
 const Page1 = ({
@@ -18,15 +18,11 @@ const Page1 = ({
   setEmailErr,
   phoneErr,
   setPhoneErr,
+  setNextDisabled,
+  page,
 }) => {
-  // // // // const [nameErr, setnameErr] = useState(null);
-  // // // // const { nextDisabled, setNextDisabled } = useContext(NextDisabledContext);
-  // // // // const [lastNameErr, setlastNameErr] = useState(null);
-  // // // // const [emailErr, setEmailErr] = useState(null);
-  // // // // const [phoneErr, setPhoneErr] = useState(null);
-
   const firstLastNameCheck = (word, setter) => {
-    console.log(firstName);
+    // console.log(firstName);
     word = word.replace(/\s/g, "");
     if (!/[^a-zA-Z]/.test(word) && word.length >= 2) {
       setter(false);
@@ -66,28 +62,46 @@ const Page1 = ({
     value = value.replace(/\s/g, "");
     let isNum = /^\d+$/.test(value);
 
-    if (isNum && value.length === 9 && e.target.value.substr(0, 4) === "+995") {
+    if (
+      isNum &&
+      value.length === 12 &&
+      e.target.value.substr(0, 4) === "+995"
+    ) {
       setPhoneErr(false);
     } else {
       setPhoneErr(true);
     }
   };
 
-  // //// useEffect(() => {
-  // ////   if (
-  // ////     (nameErr === false &&
-  // ////       lastNameErr === false &&
-  // ////       emailErr === false &&
-  // ////       phoneErr === false) ||
-  // ////     data.page1Valid
-  // ////   ) {
-  // ////     console.log("if");
-  // ////     setData({ ...data, page1Valid: true });
-  // ////   } else {
-  // // //      console.log("else");
-  // // //    setData({ ...data, page1Valid: false });
-  // // //   }
-  // // //  }, [nameErr, lastNameErr, emailErr, phoneErr]);
+  // useEffect(() => {
+  //   if (
+  //     (nameErr === false &&
+  //       lastNameErr === false &&
+  //       emailErr === false &&
+  //       phoneErr === false) ||
+  //     data.page1Valid
+  //   ) {
+  //     console.log("if");
+  //     setData({ ...data, page1Valid: true });
+  //   } else {
+  //      console.log("else");
+  //    setData({ ...data, page1Valid: false });
+  //   }
+  //  }, [nameErr, lastNameErr, emailErr, phoneErr]);
+
+  useEffect(() => {
+    if (
+      firstNameErr === false &&
+      lastNameErr === false &&
+      emailErr === false &&
+      phoneErr === false &&
+      page === 1
+    ) {
+      setNextDisabled(false);
+    } else {
+      setNextDisabled(true);
+    }
+  }, [firstNameErr, lastNameErr, emailErr, phoneErr]);
 
   return (
     <div className="page">
@@ -134,7 +148,7 @@ const Page1 = ({
         value={phone}
         onChange={handlePhone}
       />
-      {phoneErr && <p>number must start with +995 and contain 9 digits</p>}
+      {phoneErr && <p>number must start with +995 and contain 12 digits</p>}
     </div>
   );
 };

@@ -37,10 +37,16 @@
   flex-direction: column;
 }
 
-.page input {
+.page input,
+button,
+select {
   width: 400px;
 }
 
 .page p {
+  font-size: 25px;
+}
+
+.page {
   font-size: 25px;
 }
