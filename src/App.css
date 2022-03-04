@@ -50,3 +50,16 @@ select {
 .page {
   font-size: 25px;
 }
+
+.question-block {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+}
+
+.question-block div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border: 1px solid black; */
+}

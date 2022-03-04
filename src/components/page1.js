@@ -115,9 +115,7 @@ const Page1 = ({
         onChange={handleName}
       />
       {firstNameErr && (
-        <p>
-          length of name should be greater than 2 and contain only characters
-        </p>
+        <p>length of name should be at least 2 and contain only characters</p>
       )}
       <input
         placeholder="last name"
@@ -128,8 +126,7 @@ const Page1 = ({
       />
       {lastNameErr && (
         <p>
-          length of last name should be greater than 2 and contain only
-          characters
+          length of last name should be at least 2 and contain only characters
         </p>
       )}
 

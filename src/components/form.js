@@ -24,6 +24,16 @@ const Form = () => {
   const [currentSkills, setCurrentSkills] = useState([]);
   const [curSelected, setCurSelected] = useState(null);
   const [years, setYears] = useState("");
+  //
+  const [workPreferance, setWorkPreferance] = useState(null);
+  const [hadCovid, setHadCovid] = useState(null);
+  const [whenCovid, setWhenCovid] = useState("");
+  const [vaccinated, setVaccinated] = useState(null);
+  const [vaccineDate, setVaccineDate] = useState("");
+  //
+  const [devTalkAttend, setDevTalkAttend] = useState("");
+  const [devTalkText, setDevTalkText] = useState("");
+  const [special, setSpecial] = useState("");
 
   const handleNext = () => {
     return setPage(page + 1);
@@ -57,7 +67,6 @@ const Form = () => {
               setEmailErr={setEmailErr}
               phoneErr={phoneErr}
               setPhoneErr={setPhoneErr}
-              setNextDisabled={setNextDisabled}
               page={page}
             />
           );
@@ -79,13 +88,37 @@ const Form = () => {
               nextDisabled={nextDisabled}
               setNextDisabled={setNextDisabled}
               page={page}
-              setPage={setPage}
             />
           );
         case 3:
-          return <Page3 />;
+          return (
+            <Page3
+              setWorkPreferance={setWorkPreferance}
+              workPreferance={workPreferance}
+              hadCovid={hadCovid}
+              setHadCovid={setHadCovid}
+              vaccinated={vaccinated}
+              setVaccinated={setVaccinated}
+              whenCovid={whenCovid}
+              setWhenCovid={setWhenCovid}
+              page={page}
+              setNextDisabled={setNextDisabled}
+              vaccineDate={vaccineDate}
+              setVaccineDate={setVaccineDate}
+            />
+          );
         case 4:
-          return <Page4 />;
+          return (
+            <Page4
+              devTalkAttend
+              setDevTalkAttend={setDevTalkAttend}
+              devTalkText={devTalkText}
+              setDevTalkText={setDevTalkText}
+              special={special}
+              setSpecial={setSpecial}
+              page={page}
+            />
+          );
         case 5:
           return <Submit back={handleBack} />;
         default:
@@ -94,21 +127,22 @@ const Form = () => {
     }
   };
 
-  useEffect(() => {
-    if (
-      firstNameErr === false &&
-      lastNameErr === false &&
-      emailErr === false &&
-      phoneErr === false &&
-      page === 1
-    ) {
-      setNextDisabled(false);
-    } else {
-      setNextDisabled(true);
-    }
-  }, [firstNameErr, lastNameErr, emailErr, phoneErr]);
+  // useEffect(() => {
+  //   if (
+  //     firstNameErr === false &&
+  //     lastNameErr === false &&
+  //     emailErr === false &&
+  //     phoneErr === false &&
+  //     page === 1
+  //   ) {
+  //     setNextDisabled(false);
+  //   } else {
+  //     setNextDisabled(true);
+  //   }
+  // }, [firstNameErr, lastNameErr, emailErr, phoneErr]);
   return (
     <div className="form-wrapper">
+      {/* {console.log(page)} */}
       <div className="page">{displayPage()}</div>
 
       {page >= 1 && page <= 4 && (

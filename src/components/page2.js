@@ -16,7 +16,6 @@ const Page2 = ({
   // nextDisabled,
   setNextDisabled,
   page,
-  // setPage
 }) => {
   useEffect(() => {
     if (!skills) {
@@ -87,9 +86,10 @@ const Page2 = ({
         type="number"
         onChange={(e) => {
           if (
-            Number(e.target.value) < 0 ||
+            Number(e.target.value) < 1 ||
             Number(e.target.value) > 80 ||
-            e.target.value === ""
+            e.target.value === "" ||
+            e.target.value[0] === "0"
           ) {
             setYearErr(true);
           } else {
@@ -98,7 +98,7 @@ const Page2 = ({
           setYears(e.target.value);
         }}
       />
-      {yearErr && <p>experience must be from 0 to 80</p>}{" "}
+      {yearErr && <p>experience must be from 1 to 80</p>}{" "}
       {/* {console.log("currrentselected", curSelected)} */}
       <button
         onClick={handleAddSkill}
