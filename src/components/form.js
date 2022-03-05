@@ -110,13 +110,14 @@ const Form = () => {
         case 4:
           return (
             <Page4
-              devTalkAttend
+              devTalkAttend={devTalkAttend}
               setDevTalkAttend={setDevTalkAttend}
               devTalkText={devTalkText}
               setDevTalkText={setDevTalkText}
               special={special}
               setSpecial={setSpecial}
               page={page}
+              setNextDisabled={setNextDisabled}
             />
           );
         case 5:
@@ -150,6 +151,27 @@ const Form = () => {
           <button className="arrow" onClick={handleBack}>
             {"<"}
           </button>
+
+          {[...Array(5).keys()].map((elem) => {
+            return (
+              <button
+                value={elem}
+                style={{
+                  backgroundColor: "#FE3B1F",
+                  opacity: page - 1 >= elem ? "1" : "0.1",
+                  borderRadius: "45px",
+                  width: "19px",
+                  height: "19px",
+                  border: "none",
+                  cursor: page - 1 >= elem ? "pointer" : "default",
+                }}
+                onClick={(e) => setPage(Number(e.target.value) + 1)}
+                disabled={page - 1 >= elem ? false : true}
+                key={elem}
+              />
+            );
+          })}
+
           <button
             className="arrow"
             disabled={nextDisabled}

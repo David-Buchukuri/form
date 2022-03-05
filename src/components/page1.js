@@ -19,6 +19,7 @@ const Page1 = ({
   phoneErr,
   setPhoneErr,
   setNextDisabled,
+  // nextDisabled,
   page,
 }) => {
   const firstLastNameCheck = (word, setter) => {
@@ -73,23 +74,8 @@ const Page1 = ({
     }
   };
 
-  // useEffect(() => {
-  //   if (
-  //     (nameErr === false &&
-  //       lastNameErr === false &&
-  //       emailErr === false &&
-  //       phoneErr === false) ||
-  //     data.page1Valid
-  //   ) {
-  //     console.log("if");
-  //     setData({ ...data, page1Valid: true });
-  //   } else {
-  //      console.log("else");
-  //    setData({ ...data, page1Valid: false });
-  //   }
-  //  }, [nameErr, lastNameErr, emailErr, phoneErr]);
-
   useEffect(() => {
+    // console.log(nextDisabled);
     if (
       firstNameErr === false &&
       lastNameErr === false &&

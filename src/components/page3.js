@@ -150,6 +150,7 @@ const Page3 = ({
         </div>
       )}
       {whenCovid === "" && hadCovid && <p>input date to continue</p>}
+      <br />
 
       <div className="question-block">
         {/* <div> */}
