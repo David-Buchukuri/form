@@ -3,6 +3,7 @@ import Page2 from "./page2";
 import Page3 from "./page3";
 import Page4 from "./page4";
 import Home from "./home";
+import InfoBox from "./infoBox";
 import Submit from "./submit";
 
 import { useState, useEffect } from "react";
@@ -142,45 +143,47 @@ const Form = () => {
   //   }
   // }, [firstNameErr, lastNameErr, emailErr, phoneErr]);
   return (
-    <div className="form-wrapper">
-      {/* {console.log(page)} */}
-      <div className="page">{displayPage()}</div>
+    <div className="parent">
+      <div className="footer-page-wrapper">
+        <div className="page">{displayPage()}</div>
+        {page >= 1 && page <= 4 && (
+          <div className="footer">
+            <button className="arrow" onClick={handleBack}>
+              {"<"}
+            </button>
 
-      {page >= 1 && page <= 4 && (
-        <div className="footer">
-          <button className="arrow" onClick={handleBack}>
-            {"<"}
-          </button>
+            {[...Array(5).keys()].map((elem) => {
+              return (
+                <button
+                  value={elem}
+                  style={{
+                    backgroundColor: "#FE3B1F",
+                    opacity: page - 1 >= elem ? "1" : "0.1",
+                    borderRadius: "45px",
+                    width: "19px",
+                    height: "19px",
+                    border: "none",
+                    cursor: page - 1 >= elem ? "pointer" : "default",
+                  }}
+                  onClick={(e) => setPage(Number(e.target.value) + 1)}
+                  disabled={page - 1 >= elem ? false : true}
+                  key={elem}
+                />
+              );
+            })}
 
-          {[...Array(5).keys()].map((elem) => {
-            return (
-              <button
-                value={elem}
-                style={{
-                  backgroundColor: "#FE3B1F",
-                  opacity: page - 1 >= elem ? "1" : "0.1",
-                  borderRadius: "45px",
-                  width: "19px",
-                  height: "19px",
-                  border: "none",
-                  cursor: page - 1 >= elem ? "pointer" : "default",
-                }}
-                onClick={(e) => setPage(Number(e.target.value) + 1)}
-                disabled={page - 1 >= elem ? false : true}
-                key={elem}
-              />
-            );
-          })}
-
-          <button
-            className="arrow"
-            disabled={nextDisabled}
-            onClick={handleNext}
-          >
-            {">"}
-          </button>
-        </div>
-      )}
+            <button
+              className="arrow"
+              disabled={nextDisabled}
+              onClick={handleNext}
+              style={{ opacity: nextDisabled ? "0.4" : "1" }}
+            >
+              {">"}
+            </button>
+          </div>
+        )}
+      </div>
+      <InfoBox page={page} />
     </div>
   );
 };

@@ -66,7 +66,7 @@ const Page1 = ({
     if (
       isNum &&
       value.length === 12 &&
-      e.target.value.substr(0, 4) === "+995"
+      e.target.value.substr(0, 5) === "+9955"
     ) {
       setPhoneErr(false);
     } else {
@@ -91,47 +91,56 @@ const Page1 = ({
 
   return (
     <div className="page">
-      {/* {console.log(phoneErr)} */}
-      <h2>page1 title</h2>
-      <input
-        placeholder="first name"
-        type="text"
-        required
-        value={firstName}
-        onChange={handleName}
-      />
-      {firstNameErr && (
-        <p>length of name should be at least 2 and contain only characters</p>
-      )}
-      <input
-        placeholder="last name"
-        type="text"
-        required
-        value={lastName}
-        onChange={handleSurname}
-      />
-      {lastNameErr && (
-        <p>
-          length of last name should be at least 2 and contain only characters
-        </p>
-      )}
+      <div className="questions">
+        <h2>
+          hey, rocketeer, what <br /> are your coordinates
+        </h2>
+        <div className="input-container">
+          <input
+            placeholder="First Name"
+            type="text"
+            required
+            value={firstName}
+            onChange={handleName}
+          />
+          {firstNameErr && (
+            <p>
+              length of name should be at least 2 and contain only characters
+            </p>
+          )}
 
-      <input
-        placeholder="email"
-        type="text"
-        required
-        value={email}
-        onChange={handleEmail}
-      />
-      {emailErr && <p>provide valid email</p>}
+          <input
+            placeholder="Last Name"
+            type="text"
+            required
+            value={lastName}
+            onChange={handleSurname}
+          />
+          {lastNameErr && (
+            <p>
+              length of last name should be at least 2 and contain only
+              characters
+            </p>
+          )}
 
-      <input
-        placeholder="phone number"
-        type="text"
-        value={phone}
-        onChange={handlePhone}
-      />
-      {phoneErr && <p>number must start with +995 and contain 12 digits</p>}
+          <input
+            placeholder="Email"
+            type="text"
+            required
+            value={email}
+            onChange={handleEmail}
+          />
+          {emailErr && <p>provide valid email</p>}
+
+          <input
+            placeholder="+995 5 _ _ _ _"
+            type="text"
+            value={phone}
+            onChange={handlePhone}
+          />
+          {phoneErr && <p>number must start with +995 and contain 12 digits</p>}
+        </div>
+      </div>
     </div>
   );
 };

@@ -67,59 +67,65 @@ const Page2 = ({
 
   return (
     <div className="page">
-      {/* {console.log("selected skills", selectedSkills)} */}
-      <h2>page2</h2>
-      <select onChange={(e) => setCurSelected(e.target.value)}>
-        <option value="" defaultValue hidden>
-          Select your option
-        </option>
-        {currentSkills &&
-          currentSkills.map((elem) => (
-            <option key={elem.id} value={elem.id}>
-              {elem.title}
-            </option>
+      <div className="questions">
+        <h2>Tell us about your skills</h2>
+        <select
+          className="select"
+          onChange={(e) => setCurSelected(e.target.value)}
+        >
+          <option value="" defaultValue hidden>
+            skills
+          </option>
+          {currentSkills &&
+            currentSkills.map((elem) => (
+              <option key={elem.id} value={elem.id}>
+                {elem.title}
+              </option>
+            ))}
+        </select>
+        <input
+          placeholder="experience duration in years"
+          value={years}
+          type="number"
+          onChange={(e) => {
+            if (
+              Number(e.target.value) < 1 ||
+              Number(e.target.value) > 80 ||
+              e.target.value === "" ||
+              e.target.value[0] === "0"
+            ) {
+              setYearErr(true);
+            } else {
+              setYearErr(false);
+            }
+            setYears(e.target.value);
+          }}
+        />
+        {yearErr && <p>experience must be from 1 to 80</p>}{" "}
+        <div className="add-btn-parent">
+          <button
+            onClick={handleAddSkill}
+            disabled={!(curSelected !== null && yearErr === false)}
+          >
+            Add Programming Language
+          </button>
+        </div>
+        <div>
+          {console.log(selectedSkills)}
+          {selectedSkills.map((elem, idx) => (
+            <div className="added-skill-box" key={elem.id}>
+              <p className="hey">{elem.title}</p>
+              <p>Years of experience: {elem.experience}</p>
+              <button
+                onClick={() => {
+                  handleRemove(idx);
+                }}
+              >
+                -
+              </button>
+            </div>
           ))}
-      </select>
-      <input
-        placeholder="experience duration in years"
-        value={years}
-        type="number"
-        onChange={(e) => {
-          if (
-            Number(e.target.value) < 1 ||
-            Number(e.target.value) > 80 ||
-            e.target.value === "" ||
-            e.target.value[0] === "0"
-          ) {
-            setYearErr(true);
-          } else {
-            setYearErr(false);
-          }
-          setYears(e.target.value);
-        }}
-      />
-      {yearErr && <p>experience must be from 1 to 80</p>}{" "}
-      {/* {console.log("currrentselected", curSelected)} */}
-      <button
-        onClick={handleAddSkill}
-        disabled={!(curSelected !== null && yearErr === false)}
-      >
-        add skill
-      </button>
-      <div>
-        {/* {console.log("selected", selectedSkills)} */}
-        {selectedSkills.map((elem, idx) => (
-          <div key={elem.id}>
-            {elem.title}
-            <button
-              onClick={() => {
-                handleRemove(idx);
-              }}
-            >
-              X
-            </button>
-          </div>
-        ))}
+        </div>
       </div>
     </div>
   );
