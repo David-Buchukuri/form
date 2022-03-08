@@ -44,7 +44,7 @@ const Page2 = ({
     setSelectedSkills([...selectedSkills, skillObject[0]]);
 
     setCurSelected(null);
-    setYears(0);
+    setYears(1);
   };
 
   const handleRemove = (idx) => {
@@ -84,6 +84,7 @@ const Page2 = ({
             ))}
         </select>
         <input
+          className="exp-years"
           placeholder="experience duration in years"
           value={years}
           type="number"
@@ -92,7 +93,7 @@ const Page2 = ({
               Number(e.target.value) < 1 ||
               Number(e.target.value) > 80 ||
               e.target.value === "" ||
-              e.target.value[0] === "0"
+              Number(e.target.value[0]) === 0
             ) {
               setYearErr(true);
             } else {
@@ -104,6 +105,7 @@ const Page2 = ({
         {yearErr && <p>experience must be from 1 to 80</p>}{" "}
         <div className="add-btn-parent">
           <button
+            style={{ opacity: yearErr ? "0.4" : "1" }}
             onClick={handleAddSkill}
             disabled={!(curSelected !== null && yearErr === false)}
           >
@@ -111,7 +113,7 @@ const Page2 = ({
           </button>
         </div>
         <div>
-          {console.log(selectedSkills)}
+          {/* {console.log(selectedSkills)} */}
           {selectedSkills.map((elem, idx) => (
             <div className="added-skill-box" key={elem.id}>
               <p className="hey">{elem.title}</p>

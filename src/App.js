@@ -1,4 +1,6 @@
-import "./App.css";
+import "./styles/pages.css";
+import "./styles/home.css";
+import "./styles/submitted.css";
 import Form from "./components/form";
 import Applications from "./components/applications";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -13,9 +15,6 @@ function App() {
         </Routes>
       </div>
     </Router>
-    // <div className="App">
-    //   <Form />
-    // </div>
   );
 }
 

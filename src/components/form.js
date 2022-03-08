@@ -122,7 +122,24 @@ const Form = () => {
             />
           );
         case 5:
-          return <Submit back={handleBack} />;
+          return (
+            <Submit
+              back={handleBack}
+              firstName={firstName}
+              lastName={lastName}
+              email={email}
+              phone={phone}
+              workPreferance={workPreferance}
+              hadCovid={hadCovid}
+              whenCovid={whenCovid}
+              selectedSkills={selectedSkills}
+              vaccinated={vaccinated}
+              vaccineDate={vaccineDate}
+              devTalkAttend={devTalkAttend}
+              devTalkText={devTalkText}
+              special={special}
+            />
+          );
         default:
           return <Home forward={handleNext} />;
       }

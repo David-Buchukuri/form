@@ -138,7 +138,9 @@ const Page1 = ({
             value={phone}
             onChange={handlePhone}
           />
-          {phoneErr && <p>number must start with +995 and contain 12 digits</p>}
+          {phoneErr && (
+            <p>number must start with +9955 and contain 12 digits</p>
+          )}
         </div>
       </div>
     </div>

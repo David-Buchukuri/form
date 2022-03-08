@@ -22,26 +22,24 @@ const Page4 = ({
 
   return (
     <div>
-      {console.log("attand talk", devTalkAttend)}
-      {console.log("text", devTalkText)}
-      {console.log("special", special)}
-      <h2>page4</h2>
-      <div className="question-block">
+      <h2>What about you?</h2>
+      <div style={{ marginTop: "150px" }} className="question-block">
         <p>Would you attand Devtalks and maybe also organize your own?</p>
         <br />
         <div>
-          <p>yes</p>
           <input
+            style={{ width: "40px" }}
             onChange={() => setDevTalkAttend(true)}
             type="radio"
             id="DevTalkYes"
             name="DevTalk"
             checked={devTalkAttend}
           />
+          <p>yes</p>
         </div>
         <div>
-          <p>no</p>
           <input
+            style={{ width: "40px" }}
             onChange={() => {
               setDevTalkAttend(false);
               setDevTalkText("");
@@ -51,21 +49,22 @@ const Page4 = ({
             name="DevTalk"
             checked={devTalkAttend === false}
           />
+          <p>no</p>
         </div>
       </div>
-      <br />
+
       {devTalkAttend && (
-        <div className="question-block">
-          <p>what would you speak about at Devtalk</p>
-          <div className="textarea-wrapper">
-            <textarea
-              placeholder="I would.."
-              onChange={(e) => {
-                setDevTalkText(e.target.value);
-              }}
-              value={devTalkText}
-            ></textarea>
-          </div>
+        <div style={{ marginTop: "45px" }} className="question-block">
+          <p>what would you speak about at Devtalk?</p>
+
+          <textarea
+            style={{ width: "535px", height: "122px" }}
+            placeholder="I would.."
+            onChange={(e) => {
+              setDevTalkText(e.target.value);
+            }}
+            value={devTalkText}
+          ></textarea>
         </div>
       )}
       {devTalkAttend && devTalkText === "" && (
@@ -76,7 +75,8 @@ const Page4 = ({
         <p>Tell us something special</p>
         <div className="textarea-wrapper">
           <textarea
-            placeholder="I am spec.."
+            style={{ width: "535px", height: "89px" }}
+            placeholder="I.."
             onChange={(e) => {
               setSpecial(e.target.value);
             }}
