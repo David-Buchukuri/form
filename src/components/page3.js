@@ -58,7 +58,7 @@ const Page3 = ({
         <h2>Covid Stuff</h2>
         <br />
         <div className="question-block">
-          <p>how would you prefer to work</p>
+          <p style={{ fontSize: "18px" }}>how would you prefer to work</p>
           <br />
           <div className="check-question">
             <input
@@ -103,7 +103,7 @@ const Page3 = ({
         {/* */}
 
         <div className="question-block">
-          <p>did you contact covid 19 :(</p>
+          <p style={{ fontSize: "18px" }}>did you contact covid 19 :(</p>
           <br />
           <div className="check-question">
             <input
@@ -150,7 +150,7 @@ const Page3 = ({
         <br />
         <div className="question-block">
           {/* <div> */}
-          <p>have you been vaccinated?</p>
+          <p style={{ fontSize: "18px" }}>have you been vaccinated?</p>
           <br />
           <div className="check-question">
             <input
@@ -186,7 +186,9 @@ const Page3 = ({
         {vaccinated && (
           <div className="question-block date">
             {/* <div> */}
-            <p>when did you get your last covid vaccine?</p>
+            <p style={{ fontSize: "18px" }}>
+              when did you get your last covid vaccine?
+            </p>
             <br />
             <input
               onChange={(e) => setVaccineDate(e.target.value)}

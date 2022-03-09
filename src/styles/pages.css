@@ -188,4 +188,6 @@ select {
 
 .question-block textarea {
   margin-top: 20px;
+  padding: 24px;
+  box-sizing: border-box;
 }

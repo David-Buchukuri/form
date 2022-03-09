@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-
+import calendar from "../images/calendar.png";
 const FormModel = ({ elem }) => {
   const [actualSkills, setActualSkills] = useState([]);
 
   useEffect(() => {
-    console.log(elem);
+    // console.log(elem);
     fetch("https://bootcamp-2022.devtest.ge/api/skills")
       .then((res) => {
         if (!res.ok) throw new Error("something went wrong, try again later");
@@ -25,9 +25,6 @@ const FormModel = ({ elem }) => {
           })
           .filter((elem) => elem !== undefined);
         setActualSkills(skillsReady);
-      })
-      .then(() => {
-        console.log(actualSkills);
       })
       .catch((err) => {
         console.log(err.message);
@@ -73,13 +70,10 @@ const FormModel = ({ elem }) => {
         <h2>Covid Situation</h2>
         <div>
           <div className="section">
-            <p>how would you prefer to work?</p>
+            <p style={{ fontSize: "18px" }}>how would you prefer to work?</p>
             <div className="option">
               <input
                 type="radio"
-                // id="home"
-                // name="workPreferance"
-                // value="from_home"
                 checked={elem.work_preference === "from_home"}
                 disabled
               />
@@ -89,9 +83,6 @@ const FormModel = ({ elem }) => {
             <div className="option">
               <input
                 type="radio"
-                // id="home"
-                // name="workPreferance"
-                // value="from_home"
                 checked={elem.work_preference === "from_office"}
                 disabled
               />
@@ -100,9 +91,6 @@ const FormModel = ({ elem }) => {
             <div className="option">
               <input
                 type="radio"
-                // id="home"
-                // name="workPreferance"
-                // value="from_home"
                 checked={elem.work_preference === "hybrid"}
                 disabled
               />
@@ -111,67 +99,50 @@ const FormModel = ({ elem }) => {
           </div>
 
           <div className="section">
-            <p>did you have covid 19?</p>
+            <p style={{ fontSize: "18px" }}>did you have covid 19?</p>
             <div className="option">
-              <input
-                type="radio"
-                // id="home"
-                // name="workPreferance"
-                // value="from_home"
-                checked={elem.had_covid}
-                disabled
-              />
+              <input type="radio" checked={elem.had_covid} disabled />
               <p>yes</p>
             </div>
 
             <div className="option">
-              <input
-                type="radio"
-                // id="home"
-                // name="workPreferance"
-                // value="from_home"
-                checked={!elem.had_covid}
-                disabled
-              />
+              <input type="radio" checked={!elem.had_covid} disabled />
               <p>no</p>
             </div>
           </div>
 
           {elem.had_covid && (
             <div className="section">
-              <p>when did you have covid 19?</p>
+              <p style={{ fontSize: "18px" }}>when did you have covid 19?</p>
+
               <div className="option">
-                <input
-                  disabled
-                  type="date"
-                  // id="covidDate"
-                  // name="whenCovid"
-                  readOnly
-                  value={elem.had_covid_at}
-                />
+                <div className="date-input-readonly">
+                  <input
+                    disabled
+                    type="date"
+                    readOnly
+                    value={elem.had_covid_at}
+                  />
+                  <img
+                    style={{ height: "20px" }}
+                    src={calendar}
+                    alt="calendar"
+                  />
+                </div>
               </div>
             </div>
           )}
 
           <div className="section">
-            <p>have you been vaccinated?</p>
+            <p style={{ fontSize: "18px" }}>have you been vaccinated?</p>
             <div className="option">
-              <input
-                disabled
-                type="radio"
-                // id="covidDate"
-                // name="whenCovid"
-                readOnly
-                checked={elem.vaccinated}
-              />
+              <input disabled type="radio" readOnly checked={elem.vaccinated} />
               <p>yes</p>
             </div>
             <div className="option">
               <input
                 disabled
                 type="radio"
-                // id="covidDate"
-                // name="whenCovid"
                 readOnly
                 checked={!elem.vaccinated}
               />
@@ -181,19 +152,65 @@ const FormModel = ({ elem }) => {
 
           {elem.vaccinated && (
             <div className="section">
-              <p>When did you get your covid vaccine?</p>
+              <p style={{ fontSize: "18px" }}>
+                When did you get your covid vaccine?
+              </p>
               <div className="option">
-                <input
-                  disabled
-                  type="date"
-                  // id="covidDate"
-                  // name="whenCovid"
-                  readOnly
-                  value={elem.vaccinated_at}
-                />
+                <div className="date-input-readonly">
+                  <input
+                    disabled
+                    type="date"
+                    readOnly
+                    value={elem.vaccinated_at}
+                  />
+                  <img
+                    style={{ height: "20px" }}
+                    src={calendar}
+                    alt="calendar"
+                  />
+                </div>
               </div>
             </div>
           )}
+        </div>
+      </div>
+
+      <div className="insights">
+        <h2>Insights</h2>
+        <div className="section">
+          <p style={{ fontSize: "18px" }}>
+            Would you attend Devtalks and maybe organize your own?
+          </p>
+          <div className="option">
+            <input type="radio" checked={elem.will_organize_devtalk} disabled />
+            <p>yes</p>
+          </div>
+          <div className="option">
+            <input
+              type="radio"
+              checked={!elem.will_organize_devtalk}
+              disabled
+            />
+            <p>no</p>
+          </div>
+        </div>
+
+        {elem.will_organize_devtalk && (
+          <div className="section">
+            <p style={{ fontSize: "18px" }}>
+              What would you speak about at Devtalks?
+            </p>
+
+            <div className="devtalk-text-readonly">{elem.devtalk_topic}</div>
+          </div>
+        )}
+
+        <div className="section">
+          <p style={{ fontSize: "18px" }}>Tell us something special</p>
+
+          <div className="devtalk-text-readonly special">
+            {elem.something_special}
+          </div>
         </div>
       </div>
     </div>

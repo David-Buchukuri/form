@@ -22,7 +22,7 @@ const Submit = ({
   const handleSubmit = () => {
     setIsPending(true);
     const jsonObj = {
-      token: "9e75b10b-2115-45ef-bf9a-1f3de4bbb4b7",
+      token: "cc8ea109-b58e-4c6d-828a-535c89c27113",
       first_name: firstName,
       last_name: lastName,
       email: email,

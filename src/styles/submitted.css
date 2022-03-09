@@ -7,6 +7,11 @@
   background: radial-gradient(50% 50% at 50% 50%, #0c0d0e 0%, #151718 73.44%);
 }
 
+.submitted-page-wrapper {
+  min-height: 100vh;
+  background: radial-gradient(50% 50% at 50% 50%, #0c0d0e 0%, #151718 73.44%);
+}
+
 .preview-box {
   background-color: #fe3b1f;
   width: 1154px;
@@ -19,6 +24,10 @@
   box-sizing: border-box;
 }
 
+.preview-box p {
+  color: white;
+}
+
 .arrows {
   box-sizing: border-box;
   height: 10px;
@@ -29,6 +38,7 @@
   transform: rotate(45deg);
   transition: border-width 150ms ease-in-out;
   border-radius: 0px;
+  cursor: pointer;
 }
 
 .submitted-page {
@@ -41,12 +51,14 @@
 }
 
 .formModel {
+  background-color: white;
+
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   width: 1154px;
   height: 1542px;
-  background-color: rgb(26, 179, 179);
+  /* background-color: rgb(26, 179, 179); */
 }
 
 .personal-info p {
@@ -62,9 +74,9 @@
 }
 
 .personal-info {
-  width: 500px;
+  width: 550px;
   height: 450px;
-  background-color: #f1aba0;
+  /* background-color: #f1aba0; */
   padding: 80px;
   box-sizing: border-box;
 }
@@ -87,8 +99,8 @@
 }
 
 .skillset {
-  background-color: rgb(238, 182, 230);
-  width: 500px;
+  /* background-color: rgb(238, 182, 230); */
+  width: 550px;
   height: 450px;
   padding: 80px;
   box-sizing: border-box;
@@ -104,17 +116,72 @@
   width: 210px;
 }
 
-.covid {
-  width: 500px;
-  height: 350px;
-}
-
 .option {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  margin-top: 20px;
+}
+
+.option p {
+  margin-left: 5px;
 }
 
 .section {
   margin-top: 40px;
+}
+
+.covid {
+  width: 550px;
+  height: 850px;
+  /* background-color: #f1aba0; */
+  padding: 80px;
+  box-sizing: border-box;
+  margin-bottom: 150px;
+}
+
+.date-input-readonly {
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+  border: 1px solid black;
+  align-items: center;
+  padding: 17px 16px 13px 57px;
+  box-sizing: border-box;
+}
+
+.date-input-readonly input {
+  background: none;
+  border: none;
+  font-style: italic;
+}
+
+.insights {
+  width: 550px;
+  /* background-color: bisque; */
+  padding: 80px;
+  box-sizing: border-box;
+  height: 850px;
+}
+
+.devtalk-text-readonly {
+  border: 1px solid black;
+  width: 400px;
+  min-height: 122px;
+  padding: 23px;
+  box-sizing: border-box;
+  margin-top: 20px;
+}
+
+.special {
+  min-height: 61px;
+}
+
+.application-page-header {
+  align-self: flex-start;
+  font-size: 56px;
+  padding-bottom: 56px;
+  margin-top: 94px;
+  font-family: "Rowdies";
+  color: white;
 }

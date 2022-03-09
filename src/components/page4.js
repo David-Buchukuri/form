@@ -24,7 +24,9 @@ const Page4 = ({
     <div>
       <h2>What about you?</h2>
       <div style={{ marginTop: "150px" }} className="question-block">
-        <p>Would you attand Devtalks and maybe also organize your own?</p>
+        <p style={{ fontSize: "18px" }}>
+          Would you attand Devtalks and maybe also organize your own?
+        </p>
         <br />
         <div>
           <input
@@ -55,7 +57,9 @@ const Page4 = ({
 
       {devTalkAttend && (
         <div style={{ marginTop: "45px" }} className="question-block">
-          <p>what would you speak about at Devtalk?</p>
+          <p style={{ fontSize: "18px" }}>
+            what would you speak about at Devtalk?
+          </p>
 
           <textarea
             style={{ width: "535px", height: "122px" }}
@@ -72,7 +76,7 @@ const Page4 = ({
       )}
       <br />
       <div className="question-block">
-        <p>Tell us something special</p>
+        <p style={{ fontSize: "18px" }}>Tell us something special</p>
         <div className="textarea-wrapper">
           <textarea
             style={{ width: "535px", height: "89px" }}
