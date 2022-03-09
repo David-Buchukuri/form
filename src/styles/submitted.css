@@ -75,7 +75,7 @@
 
 .personal-info {
   width: 550px;
-  height: 450px;
+  height: 500px;
   /* background-color: #f1aba0; */
   padding: 80px;
   box-sizing: border-box;
@@ -101,7 +101,7 @@
 .skillset {
   /* background-color: rgb(238, 182, 230); */
   width: 550px;
-  height: 450px;
+  height: 500px;
   padding: 80px;
   box-sizing: border-box;
 }

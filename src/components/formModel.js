@@ -55,7 +55,7 @@ const FormModel = ({ elem }) => {
       </div>
       {/* {} */}
       <div className="skillset">
-        <h2>Skillset</h2>
+        <h2 style={{ paddingBottom: "44px" }}>Skillset</h2>
         {actualSkills.map((elem, idx) => {
           return (
             <div key={idx} className="skills-wrapper">
